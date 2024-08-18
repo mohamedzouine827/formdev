@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
 function LongText() {
-    const [firstName, setFirstName] = useState('');
-    const [label, setLabel] = useState('Long Text Field');
-    const [placeholder, setPlaceholder] = useState('Long Text Field');
+    const [firstName, setFirstName] = useState<string>('');
+    const [label, setLabel] = useState<string>('Long Text Field');
+    const [placeholder, setPlaceholder] = useState<string>('Long Text Field');
 
     // Update the label of the first input and the placeholder of the second input
-    const updateFields = (newLabel) => {
+    const updateFields = (newLabel: string) => {
         setLabel(newLabel);
         setPlaceholder(`${newLabel}`);
     };
 
-    const handleFirstNameChange = (event) => {
+    const handleFirstNameChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setFirstName(event.target.value);
     };
 
-    const handleLabelChange = (event) => {
+    const handleLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         updateFields(event.target.value);
     };
 

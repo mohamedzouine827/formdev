@@ -1,34 +1,27 @@
-"use client";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
+"use client"
+import React, { useRef, useState, useMemo, useEffect } from 'react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import AddButton from '@/app/Assets/AddButton';
 import PenIcon from '@/app/Assets/PenIcon';
-import React, { useRef, useState } from 'react';
 import Name from "@/app/FormComponents/Name";
 import Email from "@/app/FormComponents/Email";
 import Number from "@/app/FormComponents/Number";
 import Checkbox from "@/app/FormComponents/CheckBox";
 import LongText from "@/app/FormComponents/LongText";
+import { useFormContext } from '@/app/context'; // import the context hook
 
 function CreateForm() {
     const [textOn, setTextOn] = useState(false);
-    const textRef = useRef(null);
+    const textRef = useRef<HTMLInputElement>(null);
+    
+    const { memoizedItems, setMemoizedItems } = useFormContext(); // Use the context
 
-    const [selectedItems, setSelectedItems] = useState([]);
-
-    const itemNumbers = {
+    const itemNumbers: Record<string, JSX.Element> = {
         Profile: <Name key="Profile" />,
-        Email: <Email key="Email"/>,
-        Number: <Number key="Number"/>,
-        CheckBox: <Checkbox key="CheckBox"/>,
-        LongText: <LongText key="LongText"/>
+        Email: <Email key="Email" />,
+        Number: <Number key="Number" />,
+        CheckBox: <Checkbox key="CheckBox" />,
+        LongText: <LongText key="LongText" />
     };
 
     const handleInputChange = () => {
@@ -39,8 +32,8 @@ function CreateForm() {
         }
     };
 
-    const handleItemClick = (item) => {
-        setSelectedItems([...selectedItems, item]);
+    const handleItemClick = (item: string) => {
+        setMemoizedItems(prevItems => [...prevItems, item]); // Update context
     };
 
     return (
@@ -68,15 +61,15 @@ function CreateForm() {
                 </DropdownMenuContent>
             </DropdownMenu>
 
-            <div className=" flex flex-col gap-8">
-                {selectedItems.map(item => (
-                    <div key={item} >
+            <div className="flex flex-col gap-8">
+                {memoizedItems.map(item => (
+                    <div key={item}>
                         {itemNumbers[item]}
                     </div>
                 ))}
             </div>
-
-            <div className="bg-[#09090B] text-[#fafafa] w-[118px] h-[57px] flex justify-center items-center text-[20px] font-semibold rounded-[9px] ">
+                
+            <div className="bg-[#09090B] text-[#fafafa] w-[118px] h-[57px] flex justify-center items-center text-[20px] font-semibold rounded-[9px]">
                 Submit
             </div>
         </section>
