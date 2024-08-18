@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function HeroSection() {
@@ -13,7 +14,9 @@ export default function HeroSection() {
             </div>
             <div className="h-[52px] justify-start items-start gap-8 inline-flex">
                 <button className="h-[52px] px-6 py-4 bg-zinc-950 rounded-[9px] justify-center items-center gap-2.5 flex">
+                    <Link href="/create">
                     <div className="text-neutral-50 text-base font-semibold font-['Plus Jakarta Sans']">Create Form</div>
+                    </Link>
                 </button>
                 <button className="h-[52px] px-6 py-4 rounded-[9px] border border-zinc-950 justify-center items-center gap-2.5 flex">
                     <div className="text-zinc-950 text-base font-semibold font-['Plus Jakarta Sans']">Templates</div>
