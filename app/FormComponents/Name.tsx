@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
 function Name() {
-    const [firstName, setFirstName] = useState('');
-    const [label, setLabel] = useState('short text');
-    const [placeholder, setPlaceholder] = useState('Enter your short text');
+    const [firstName, setFirstName] = useState<string>('');
+    const [label, setLabel] = useState<string>('short text');
+    const [placeholder, setPlaceholder] = useState<string>('Enter your short text');
 
     // Update the label of the first input and the placeholder of the second input
-    const updateFields = (newLabel) => {
+    const updateFields = (newLabel: string) => {
         setLabel(newLabel);
         setPlaceholder(`Enter your ${newLabel}`);
     };
 
-    const handleFirstNameChange = (event) => {
+    const handleFirstNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFirstName(event.target.value);
     };
 
-    const handleLabelChange = (event) => {
+    const handleLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         updateFields(event.target.value);
     };
 
