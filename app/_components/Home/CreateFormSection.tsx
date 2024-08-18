@@ -12,7 +12,7 @@ export default function CreateFormSection() {
             <CreateForm />
             <Link href="/results">
             <div className="h-[57px] px-8 py-4 rounded-[9px] border border-zinc-950 justify-center items-center gap-2.5 inline-flex">
-                <div className="text-black text-xl font-semibold font-['Plus Jakarta Sans']">Get Code</div>
+                <div className="text-black text-xl font-semibold font-['Plus Jakarta Sans']">Check Form</div>
             </div>
             </Link>
         </section>

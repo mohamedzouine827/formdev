@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 function Name() {
     const [firstName, setFirstName] = useState('');
-    const [label, setLabel] = useState('First Name');
-    const [placeholder, setPlaceholder] = useState('Enter your First Name');
+    const [label, setLabel] = useState('short text');
+    const [placeholder, setPlaceholder] = useState('Enter your short text');
 
     // Update the label of the first input and the placeholder of the second input
     const updateFields = (newLabel) => {

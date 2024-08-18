@@ -6,7 +6,7 @@ import Footer from '../_components/Footer'
 export default function page() {
   return (
     <section>
-        <Navbar button='Preview'/>
+        <Navbar button='Get Code'/>
         <CreateFormSection/>
         <Footer/>
     </section>

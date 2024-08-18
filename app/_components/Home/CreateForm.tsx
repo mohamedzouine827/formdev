@@ -1,3 +1,4 @@
+
 "use client";
 import {
     DropdownMenu,
@@ -22,7 +23,6 @@ function CreateForm() {
     const [textOn, setTextOn] = useState(false);
     const textRef = useRef<HTMLInputElement>(null);
 
-
     const itemNumbers: Record<string, JSX.Element> = {
         Profile: <Name key="Profile" />,
         Email: <Email key="Email" />,
@@ -30,13 +30,15 @@ function CreateForm() {
         CheckBox: <Checkbox key="CheckBox" />,
         LongText: <LongText key="LongText" />
     };
-    const { selectedItems, setSelectedItems } = useFormContext();
+    const { selectedItems, setSelectedItems, formName, setFormName } = useFormContext();
 
     const handleInputChange = () => {
         if (textRef.current && textRef.current.value.trim() !== "") {
             setTextOn(true);
+            setFormName(textRef.current.value);
         } else {
             setTextOn(false);
+            setFormName('');
         }
     };
 
@@ -60,6 +62,7 @@ function CreateForm() {
                     placeholder='Name Of The Form'
                     ref={textRef}
                     onChange={handleInputChange}
+                    value={formName}
                 />
                 {!textOn && <PenIcon />}
             </div>
@@ -93,4 +96,3 @@ function CreateForm() {
 }
 
 export default CreateForm;
-
