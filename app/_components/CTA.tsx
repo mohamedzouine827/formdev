@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function CTA() {
@@ -8,7 +9,9 @@ export default function CTA() {
 <div className="w-[864px] text-center text-[#71717A] text-[24px] font-semibold  ">Get Started with FormDev and start making form easily</div>
 </div>
 <div className="px-6 py-4 bg-zinc-950 rounded-[9px] justify-center items-center gap-2.5 inline-flex">
+  <Link href="/create">
 <div className="text-neutral-50 text-base font-semibold ">Create Form</div>
+</Link>
 </div>
 </div>
   )
